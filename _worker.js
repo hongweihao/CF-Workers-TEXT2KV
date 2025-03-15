@@ -9,8 +9,11 @@ export default {
                 throw new Error('KV 命名空间未绑定');
             }
 
+            console.log("request.url", request.url);
             const url = new URL(request.url);
             const token = url.pathname === `/${mytoken}` ? mytoken : (url.searchParams.get('token') || "null");
+
+            console.log("url.pathname", url.pathname);
 
             if (token !== mytoken) {
                 return createResponse('token 有误', 403);
