@@ -181,13 +181,11 @@ function configHTML(domain, token) {
 <body>
         <h1>TEXT2KV 配置信息</h1>
     <div class="container">
-
+        <h2>在线文档查询:</h2>
         <p>
             <strong>服务域名:</strong> ${domain}<br>
             <strong>TOKEN:</strong> ${token}<br>
         </p>
-            <pre><code class="language-bash">curl "https://${domain}/config/update.sh?token=${token}&t=$(date +%s%N)" -o update.sh && chmod +x update.sh</code></pre>
-            <h2>在线文档查询:</h2>
         <div class="input-button-container">
             <input type="text" id="keyword" placeholder="请输入要查询的文档">
             <button onclick="viewDocument()">查看文档内容</button>
@@ -200,24 +198,16 @@ function configHTML(domain, token) {
          */
         function viewDocument() {
             const keyword = document.getElementById('keyword').value;
-            window.open('https://${domain}/' + keyword + '?token=${token}&t=' + Date.now(), '_blank');
+            const url = 'https://${domain}/${token}/${keyword}';
+            window.open(url, '_blank');
         }
-
         /**
          * 复制文档地址到剪贴板
          */
         function copyDocumentURL() {
             const keyword = document.getElementById('keyword').value;
-            const url = 'https://${domain}/' + keyword + '?token=${token}&t=' + Date.now();
+            const url = 'https://${domain}/${token}/${keyword}';
             navigator.clipboard.writeText(url).then(() => alert('文档地址已复制到剪贴板'));
-        }
-
-        /**
-         * 复制 Linux 脚本到剪贴板
-         */
-        function copyLinuxScript() {
-            const script = \`curl "https://${domain}/config/update.sh?token=${token}&t=$(date +%s%N)" -o update.sh && chmod +x update.sh\`;
-            navigator.clipboard.writeText(script).then(() => alert('已复制到剪贴板'));
         }
     </script>
 </body>
