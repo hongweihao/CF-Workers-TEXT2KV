@@ -1,7 +1,7 @@
 export default {
     async fetch(request, env) {
         try {
-            mytoken = env.TOKEN || 'passwd';
+            const mytoken = env.TOKEN || 'passwd';
             if (!env.KV) {
                 throw new Error('KV 命名空间未绑定');
             }
