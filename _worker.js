@@ -198,7 +198,7 @@ function configHTML(domain, token) {
          */
         function viewDocument() {
             const keyword = document.getElementById('keyword').value;
-            const url = 'https://${domain}/${token}/${keyword}';
+            const url = 'https://${domain}/${token}/'+keyword';
             window.open(url, '_blank');
         }
         /**
@@ -206,7 +206,7 @@ function configHTML(domain, token) {
          */
         function copyDocumentURL() {
             const keyword = document.getElementById('keyword').value;
-            const url = 'https://${domain}/${token}/${keyword}';
+            const url = 'https://${domain}/${token}/'+keyword';
             navigator.clipboard.writeText(url).then(() => alert('文档地址已复制到剪贴板'));
         }
     </script>
