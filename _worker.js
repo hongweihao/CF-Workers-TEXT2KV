@@ -7,7 +7,7 @@ export default {
             }
 
             const url = new URL(request.url);
-            const path = pathname.startsWith('/') ? pathname.substring(1) : pathname;
+            const path = url.pathname.startsWith('/') ? url.pathname.substring(1) : url.pathname;
             const parts = path.split('/');
 
             if (parts.length < 2) {
