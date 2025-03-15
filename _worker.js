@@ -16,7 +16,7 @@ export default {
 
             // 第一部分是 token，第二部分是 fileName
             const token = parts[0] || "null";
-            const fileName = parts[1];
+            let fileName = parts[1];
             if (token !== mytoken) {
                 return createResponse('token 有误', 403);
             }
